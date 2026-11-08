@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objex — Explore, Capture, Learn</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#" aria-label="Objex beranda"><span class="brand-icon">📸</span><span>Objex</span></a>
+    <p class="tagline">Explore • Capture • Learn</p>
+    <nav>
+      <button class="nav-link active" data-page="home">🏠 <span>Beranda</span></button>
+      <button class="nav-link" data-page="missions">🧭 <span>Misi</span></button>
+      <button class="nav-link" data-page="camera">📷 <span>Kamera</span></button>
+      <button class="nav-link" data-page="words">📚 <span>Kosakata</span></button>
+      <button class="nav-link" data-page="practice">✍️ <span>Latihan</span></button>
+      <button class="nav-link" data-page="achievements">🏆 <span>Prestasi</span></button>
+      <button class="nav-link" data-page="profile">👤 <span>Profil</span></button>
+      <button class="nav-link teacher-nav" data-page="teacher">🧑‍🏫 <span>Dashboard Guru</span></button>
+    </nav>
+    <div class="sidebar-user"><div class="avatar">🧑🏻‍🎓</div><div><b>Pelajar Objex</b><small>Kelas 7 • Pemula</small></div></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><span class="eyebrow">BELAJAR BAHASA INGGRIS</span><h1 id="pageTitle">Halo, Penjelajah! 👋</h1></div>
+      <div class="points-pill">⭐ <b id="topPoints">0</b> poin</div>
+    </header>
+
+    <section class="page active" id="home">
+      <div class="hero">
+        <div class="hero-copy"><span class="pill light">🎯 MISI HARI INI</span><h2>Belajar bahasa Inggris<br>di dunia nyata!</h2><p>Jelajahi sekitarmu, foto sebuah benda, lalu deskripsikan dalam bahasa Inggris.</p><button class="btn btn-white" data-go="missions">Lihat Misi <span>→</span></button></div>
+        <div class="hero-art" aria-hidden="true">🌳<span>📸</span>🌼</div>
+      </div>
+      <div class="section-heading"><div><h2>Misi pilihan untukmu</h2><p>Coba selesaikan satu misi hari ini.</p></div><button class="text-button" data-go="missions">Lihat semua →</button></div>
+      <div class="mission-grid">
+        <article class="mission-card"><div class="mission-art green">🌿</div><div class="card-body"><span class="difficulty easy">● Mudah</span><h3>Find something green!</h3><p>Foto tanaman atau benda berwarna hijau.</p><div class="card-bottom"><span>⭐ 50 poin</span><button class="btn btn-small" data-start="green">Mulai</button></div></div></article>
+        <article class="mission-card"><div class="mission-art yellow">⭕</div><div class="card-body"><span class="difficulty easy">● Mudah</span><h3>Find a circle!</h3><p>Temukan benda berbentuk lingkaran.</p><div class="card-bottom"><span>⭐ 50 poin</span><button class="btn btn-small" data-start="circle">Mulai</button></div></div></article>
+        <article class="mission-card"><div class="mission-art blue">🎒</div><div class="card-body"><span class="difficulty medium">● Menengah</span><h3>Find your school item!</h3><p>Foto benda yang kamu pakai di sekolah.</p><div class="card-bottom"><span>⭐ 75 poin</span><button class="btn btn-small" data-start="school">Mulai</button></div></div></article>
+      </div>
+      <div class="quick-stats">
+        <article><span>⭐</span><div><small>Total poin</small><b id="homePoints">0</b></div></article>
+        <article><span>📷</span><div><small>Foto dipilih</small><b id="homePhotos">0</b></div></article>
+        <article><span>🏅</span><div><small>Badge terbuka</small><b id="homeBadges">0</b></div></article>
+      </div>
+      <div class="bottom-grid">
+        <div class="panel"><div class="section-heading"><div><h2>Perjalanan belajarmu</h2><p>Setiap foto adalah pengalaman baru.</p></div>🚀</div><div class="progress-label"><span>Misi selesai</span><b id="missionCount">0 / 14</b></div><div class="progress"><span id="progressBar"></span></div><p class="muted small">Selesaikan misi untuk mendapatkan poin dan terus berlatih!</p></div>
+        <div class="panel tip-panel"><div class="tip-icon">💡</div><div><b>Tip bahasa hari ini</b><p>Gunakan pola sederhana: <strong>“This is a …”</strong></p><span class="example">This is a green leaf. = Ini daun hijau.</span></div></div>
+      </div>
+    </section>
+
+    <section class="page" id="missions">
+      <div class="section-heading"><div><h2>🧭 Misi Eksplorasi</h2><p>Amati lingkungan sekitar dengan aman. Minta izin guru atau orang tua jika perlu.</p></div></div>
+      <div class="mission-list" id="missionList"></div>
+    </section>
+
+    <section class="page" id="camera">
+      <div class="section-heading"><div><h2>📷 Ambil Foto</h2><p id="cameraMission">Pilih foto benda yang akan kamu deskripsikan.</p></div></div>
+      <div class="workbench">
+        <div class="photo-panel">
+          <div class="photo-preview" id="photoPreview" aria-label="Pratinjau foto"><div class="camera-placeholder">📸<b>Foto benda di sekitarmu</b><span>Gunakan kamera atau pilih foto dari perangkat.</span></div></div>
+          <div class="photo-actions"><label class="btn btn-outline" for="galleryInput">🖼️ Pilih Foto</label><label class="btn" for="cameraInput">📷 Buka Kamera</label><input id="galleryInput" type="file" accept="image/*" hidden><input id="cameraInput" type="file" accept="image/*" capture="environment" hidden></div>
+          <p class="muted small">Catatan: kamera memerlukan izin browser dan biasanya berjalan di HTTPS atau localhost.</p>
+          <div class="ai-panel">
+            <div class="ai-panel-heading"><span class="ai-icon">🤖</span><div><b>Objex AI — Pengenal Objek</b><small>TensorFlow.js + COCO-SSD</small></div><span class="ai-status" id="aiStatus">Belum aktif</span></div>
+            <p class="muted small">Pilih foto, lalu tekan tombol analisis. AI akan memperkirakan objek yang terlihat dan mencocokkannya dengan misi.</p>
+            <button class="btn btn-wide" id="analyzeButton" type="button" disabled>🔍 Analisis Foto dengan AI</button>
+            <div id="aiResult" class="ai-result" aria-live="polite">AI akan mendeteksi objek umum setelah model berhasil dimuat dari internet.</div>
+            <p class="ai-disclaimer">Hasil AI adalah perkiraan, bukan bukti pasti. Periksa kembali foto sebelum menyelesaikan misi.</p>
+          </div>
+        </div>
+        <div class="writing-panel">
+          <div class="stepper"><span class="step active">1 Foto</span><span class="step active">2 Tulis</span><span class="step">3 Hasil</span></div>
+          <label class="field-label" for="description">Tulis satu kalimat dalam bahasa Inggris</label>
+          <textarea id="description" maxlength="160" placeholder="Contoh: This is a green leaf."></textarea>
+          <div class="char-count"><span>Gunakan kalimat sederhana.</span><span id="charCount">0/160</span></div>
+          <button class="hint-toggle" id="hintToggle">💡 Butuh bantuan kosakata? <span>＋</span></button>
+          <div class="word-hints" id="wordHints" hidden>
+            <p>Klik kata untuk menambahkannya ke kalimatmu.</p>
+            <div class="word-chips">
+              <button data-word="green">green <small>hijau</small></button><button data-word="leaf">leaf <small>daun</small></button><button data-word="plant">plant <small>tanaman</small></button><button data-word="beautiful">beautiful <small>indah</small></button><button data-word="round">round <small>bulat</small></button><button data-word="book">book <small>buku</small></button><button data-word="big">big <small>besar</small></button><button data-word="small">small <small>kecil</small></button>
+            </div>
+          </div>
+          <button class="btn btn-wide" id="checkButton">Periksa Kalimat ✨</button>
+          <p class="muted small">Koreksi demo memeriksa pola kalimat dasar, bukan analisis AI sungguhan.</p>
+        </div>
+      </div>
+      <div class="result-panel" id="resultPanel" hidden aria-live="polite"></div>
+    </section>
+
+    <section class="page" id="words">
+      <div class="section-heading"><div><h2>📚 Kotak Kosakata</h2><p>Kata sederhana untuk membantumu mendeskripsikan benda.</p></div></div>
+      <div class="flashcard-panel panel">
+        <div class="section-heading"><div><h2>🃏 Flashcard Kosakata</h2><p>Tekan kartu untuk melihat arti bahasa Indonesianya.</p></div><button class="btn btn-outline" id="nextFlashcard" type="button">Kartu berikutnya →</button></div>
+        <div class="flashcard" id="flashcard" role="button" tabindex="0" aria-label="Balik kartu kosakata">
+          <span class="flashcard-hint">KLIK UNTUK MEMBALIK KARTU</span><strong id="flashcardWord">pencil</strong><span id="flashcardIcon">✏️</span><b id="flashcardMeaning" hidden>pensil</b>
+        </div>
+        <div class="flashcard-controls"><label for="vocabSearch">Cari kosakata</label><input id="vocabSearch" type="search" placeholder="Cari: leaf, book, green…"><span id="flashcardCounter" class="muted small">Kartu 1</span></div>
+      </div>
+      <div id="vocabCategories" class="vocab-categories"></div>
+      <div class="vocab-grid" id="vocabGrid"></div>
+      <div class="panel"><h3>Contoh kalimat</h3><p>• This is a green leaf. — Ini daun hijau.</p><p>• The flower is beautiful. — Bunga itu indah.</p><p>• This is a big book. — Ini buku besar.</p></div>
+    </section>
+
+    <section class="page" id="practice">
+      <div class="section-heading"><div><h2>✍️ Latihan Membuat Kalimat</h2><p>Susun kalimat deskriptif sederhana dalam bahasa Inggris.</p></div></div>
+      <div class="practice-layout">
+        <div class="panel practice-guide"><span class="practice-icon">💬</span><h3>Pola kalimat pemula</h3>
+          <div class="pattern-card"><b>This is a/an + benda + kata sifat.</b><p>This is a green leaf.</p><small>Ini adalah daun hijau.</small></div>
+          <div class="pattern-card"><b>The + benda + is + kata sifat.</b><p>The flower is beautiful.</p><small>Bunga itu indah.</small></div>
+          <div class="pattern-card"><b>I see a/an + benda.</b><p>I see a big tree.</p><small>Saya melihat pohon besar.</small></div>
+          <p class="muted small">Ingat: gunakan <b>a</b> sebelum bunyi konsonan (a book), dan <b>an</b> sebelum bunyi vokal (an apple).</p>
+        </div>
+        <div class="panel practice-work"><label class="field-label" for="practicePrompt">Pilih latihan</label>
+          <select id="practicePrompt"><option value="leaf">Daun hijau — green leaf</option><option value="flower">Bunga indah — beautiful flower</option><option value="book">Buku besar — big book</option><option value="bottle">Botol biru — blue bottle</option><option value="tree">Pohon tinggi — tall tree</option><option value="ball">Bola merah — red ball</option></select>
+          <div class="practice-example" id="practiceExample">Petunjuk: This is a green leaf.</div>
+          <label class="field-label" for="practiceInput">Tulis kalimat versimu</label><textarea id="practiceInput" maxlength="160" placeholder="Contoh: This is a green leaf."></textarea>
+          <button class="btn btn-wide" id="practiceCheck" type="button">Periksa latihan ✨</button>
+          <div id="practiceResult" class="practice-result" aria-live="polite">Hasil latihan akan muncul di sini.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="achievements">
+      <div class="section-heading"><div><h2>🏆 Badge dan Penghargaan</h2><p>Kumpulkan pencapaian dengan menyelesaikan misi dan berlatih.</p></div></div>
+      <div class="achievement-summary panel"><div><b id="badgeCount">0 / 7</b><span>Badge terbuka</span></div><div class="progress"><span id="badgeProgress"></span></div></div>
+      <div class="badge-grid" id="badgeGrid"></div>
+    </section>
+
+    <section class="page" id="profile">
+      <div class="profile-card"><div class="profile-avatar">🧑🏻‍🎓</div><h2 id="profileNameHeading">Pelajar Objex</h2><p id="profileClassLabel">Penjelajah bahasa Inggris level pemula</p><div class="profile-stats"><div><b id="profilePoints">0</b><span>Total poin</span></div><div><b id="profileMissions">0</b><span>Misi selesai</span></div><div><b id="profilePhotos">0</b><span>Foto dipilih</span></div></div></div>
+      <div class="panel profile-edit"><h3>🪪 Identitas pelajar</h3><form id="profileForm" class="profile-form"><label>Nama panggilan<input id="profileNameInput" type="text" maxlength="50" placeholder="Masukkan nama" required></label><label>Kelas<input id="profileClassInput" type="text" maxlength="20" placeholder="Contoh: 7A"></label><button class="btn" type="submit">Simpan profil</button></form></div>
+      <div class="panel"><h3>🎯 Target belajarmu</h3><p>Berlatih menulis kalimat deskriptif sederhana dalam bahasa Inggris setiap hari.</p><button class="btn" data-go="missions">Lanjutkan misi</button> <button class="btn btn-outline" id="resetProgressButton" type="button">Reset progres</button><p class="muted small">Progres disimpan di browser/perangkat ini. Foto tidak disimpan oleh aplikasi.</p></div>
+    </section>
+
+    <section class="page" id="teacher">
+      <div class="section-heading"><div><h2>🧑‍🏫 Dashboard Guru</h2><p>Pantau data kelas, progres misi, dan daftar siswa Objex.</p></div><button class="btn btn-outline" id="exportTeacherCsv" type="button">⬇ Ekspor CSV</button></div>
+      <div class="teacher-notice">ℹ️ <b>Mode demo lokal:</b> dashboard ini membaca progres dari browser/perangkat yang sedang digunakan. Data siswa dari perangkat lain belum otomatis tersinkron. Untuk pemantauan kelas sungguhan, Objex perlu login dan database online.</div>
+      <div class="teacher-stats">
+        <article class="teacher-stat"><span>👥</span><div><small>Siswa terdaftar</small><b id="teacherStudentCount">0</b></div></article>
+        <article class="teacher-stat"><span>🎯</span><div><small>Misi selesai (perangkat ini)</small><b id="teacherMissionCount">0</b></div></article>
+        <article class="teacher-stat"><span>⭐</span><div><small>Total poin (perangkat ini)</small><b id="teacherPointCount">0</b></div></article>
+        <article class="teacher-stat"><span>📷</span><div><small>Foto dipilih (perangkat ini)</small><b id="teacherPhotoCount">0</b></div></article>
+      </div>
+      <div class="panel teacher-panel">
+        <div class="section-heading"><div><h2>Daftar siswa</h2><p>Tambahkan siswa untuk membuat daftar kelas.</p></div></div>
+        <form id="addStudentForm" class="student-form">
+          <label><span>Nama siswa</span><input id="studentName" type="text" maxlength="60" placeholder="Contoh: Andi Pratama" required></label>
+          <label><span>Kelas</span><input id="studentClass" type="text" maxlength="20" placeholder="Contoh: 7A" required></label>
+          <button class="btn" type="submit">＋ Tambah siswa</button>
+        </form>
+        <div class="teacher-table-tools"><input id="studentSearch" type="search" placeholder="Cari nama atau kelas siswa…" aria-label="Cari siswa"><span id="teacherRosterCount" class="muted small">0 siswa</span></div>
+        <div class="table-wrap"><table class="teacher-table"><thead><tr><th>Nama siswa</th><th>Kelas</th><th>Status data</th><th>Aksi</th></tr></thead><tbody id="studentTableBody"><tr><td colspan="4" class="empty-row">Belum ada siswa. Tambahkan siswa terlebih dahulu.</td></tr></tbody></table></div>
+      </div>
+      <div class="panel teacher-panel">
+        <div class="section-heading"><div><h2>Ringkasan misi</h2><p>Rincian misi yang sudah diselesaikan pada browser ini.</p></div></div>
+        <div id="teacherMissionReport" class="teacher-mission-report"></div>
+      </div>
+    </section>
+
+    <footer>📸 <b>Objex</b><span>Explore • Capture • Learn</span><small>Belajar bahasa Inggris, jadi lebih seru!</small></footer>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3"></script>
+  <script src="script.js"></script>
+</body>
+</html>
